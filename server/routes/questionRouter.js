@@ -2,13 +2,13 @@ const express = require('express');
 const questionController = require('./../controllers/questionController')
 const authController = require('./../controllers/authController')
 
-const router = express.Router({mergeParam: true})
+const router = express.Router({mergeParams: true})
 
 router.use(authController.protect)
 
 router.route('/')
       .get(questionController.getAllQuestion)
-      .post(questionController.createQuestion)
+      .post(questionController.setQuizIds,questionController.createQuestion)
       
 router.route('/:id')
       .get(questionController.getQuestion)

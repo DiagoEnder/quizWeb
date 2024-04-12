@@ -5,6 +5,8 @@ const helmet= require('helmet')
 const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp');
+const cors = require('cors');
+
 
 
 const AppError = require('./utils/appError');
@@ -15,7 +17,10 @@ const reviewRouter = require('./routes/reviewRoute');
 const quizRouter = require('./routes/quizRoute');
 const questionRouter = require('./routes/questionRouter')
 
+
 const app = express();
+app.use(cors())
+
 
 console.log(process.env.NODE_ENV);
 // 1.Middleware or GET middlewarelobal middleware
@@ -79,6 +84,7 @@ app.use('/api/v1/users',userRouter);
 app.use('/api/v1/review', reviewRouter)
 app.use('/api/v1/quiz', quizRouter)
 app.use('/api/v1/question', questionRouter)
+
 
 
 
